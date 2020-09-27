@@ -1,7 +1,7 @@
-import * as path from 'path';
-import * as fs from 'fs';
+// import * as path from 'path';
+// import * as fs from 'fs';
 import * as cp from 'child_process';
-import * as parseSemver from 'parse-semver';
+// import * as parseSemver from 'parse-semver';
 import * as _ from 'lodash';
 import { CancellationToken } from './util';
 
@@ -57,7 +57,7 @@ function checkNPM(cancellationToken?: CancellationToken): Promise<void> {
 		}
 	});
 }
-
+/*
 function getNpmDependencies(cwd: string): Promise<string[]> {
 	return checkNPM()
 		.then(() =>
@@ -70,13 +70,13 @@ interface YarnTreeNode {
 	name: string;
 	children: YarnTreeNode[];
 }
-
+*/
 export interface YarnDependency {
 	name: string;
 	path: string;
 	children: YarnDependency[];
 }
-
+/*
 function asYarnDependency(prefix: string, tree: YarnTreeNode, prune: boolean): YarnDependency | null {
 	if (prune && /@[\^~]/.test(tree.name)) {
 		return null;
@@ -191,10 +191,15 @@ async function getYarnDependencies(cwd: string, packagedDependencies?: string[])
 	}
 
 	return _.uniq(result);
-}
+}*/
 
-export function getDependencies(cwd: string, useYarn = false, packagedDependencies?: string[]): Promise<string[]> {
-	return useYarn ? getYarnDependencies(cwd, packagedDependencies) : getNpmDependencies(cwd);
+export async function getDependencies(
+	cwd: string,
+	useYarn = false,
+	packagedDependencies?: string[]
+): Promise<string[]> {
+	cwd && useYarn && packagedDependencies;
+	return [];
 }
 
 export function getLatestVersion(name: string, cancellationToken?: CancellationToken): Promise<string> {
