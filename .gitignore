@@ -1,5 +1,5 @@
 node_modules/
-out/
+# out
 npm-debug.log
 !src/test/**/node_modules
 package-lock.json
